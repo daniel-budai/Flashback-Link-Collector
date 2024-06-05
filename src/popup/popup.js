@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
       chrome.scripting.executeScript(
         {
           target: { tabId: tabs[0].id },
-          files: ["content.js"],
+          files: ["src/content/content.js"],
         },
         () => {
           chrome.tabs.sendMessage(
