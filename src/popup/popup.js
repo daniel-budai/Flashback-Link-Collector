@@ -13,9 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
             (response) => {
               const links = response.links;
               const div = document.getElementById("links");
+
               links.forEach((link) => {
                 const p = document.createElement("p");
-                p.textContent = link;
+
+                if (link.startsWith("https://www.flashback.org/leave.php?u=")) {
+                  const actualUrl = new URL(link).searchParams.get("u");
+                  p.textContent = actualUrl;
+                } else {
+                  p.textContent = link;
+                }
+
                 div.appendChild(p);
               });
             }
